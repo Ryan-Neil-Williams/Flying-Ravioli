@@ -6,6 +6,11 @@
 #include "GameFramework/Pawn.h"
 #include "AirPlane.generated.h"
 
+class UCapsuleComponent;
+class USkeletalMeshComponent;
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class FLYINGRAVIOLI_API AAirPlane : public APawn
 {
@@ -19,5 +24,22 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	
+	void MoveForward(float Value);
+	void Turn(float Value);
+	void LookUp(float Value);
+
+private:
+	UPROPERTY(VisibleAnywhere)
+	UCapsuleComponent* Capsule;
+
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* AirPlaneMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArm;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* ViewCamera;
 
 };
